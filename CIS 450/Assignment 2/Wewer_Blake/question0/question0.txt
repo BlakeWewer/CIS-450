@@ -1,0 +1,8 @@
+0)	
+	1: c = 0xf0; uc = 0xf0;
+	2: c = fffffff0; uc = 00f0;
+	3: us1 = 0xf0; us2 = 0xf0;
+	4: us1 = fff0; us2 = f0;
+	5: c = fffffff0; uc = 00f0;
+	6: s1 = 0xf0; s2 = 0xf0;
+	7: s1 = fffffff0; s2 = f0;

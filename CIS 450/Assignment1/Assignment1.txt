@@ -1,0 +1,33 @@
+	CS450 		Spring, 2018
+
+Assignment1
+Due:  Do not turn in.  Just try on your own computer running Cygwin or Linux
+
+Step 1: Read and understand the codes in file1.c and file2.c
+
+Step 2: Compile (do not assemble or link) file1.c and file2.c
+   gcc -S file1.c
+   gcc -S file2.c
+   
+   The above commands yield file1.s and file2.s.
+   Open file1.s and file2.s in an editor
+   
+Step 3: Assemble file1.s and file2.s
+   gcc -c file1.s
+   gcc -c file2.s
+   
+   The above commands yield file1.o and file2.o
+   They are binary files and cannot be opened by an editor
+   
+   Delete file1.s and file1.o and issue
+   gcc -c file1.c
+   This command generates file1.o (but it deletes file1.s)
+   
+Step 4: Link file1.o and file2.o (and library files)
+   gcc file1.o file2.o
+   
+   The above command yields a.out (a.exe in cygwin)
+   
+Step 5: Execute a.out (or a.exe)
+   ./a.out    (or ./a.exe) 
+   if you have added . (the current working directory) in the execution path, "./" is not necessary

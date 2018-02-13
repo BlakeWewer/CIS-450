@@ -1,0 +1,91 @@
+
+
+		  CIS 450 Assignment 2		       Spring, 2018
+
+Due: 12:20pm on 2/16/2018 (Friday)
+
+0. Show that the following program running on Pentium prints
+          fff0	f0
+      fffffff0	f0
+      
+    ========== Program =================
+    #include <stdio.h>
+    
+    void main() {
+      char c;
+      unsigned char uc;
+      short s1, s2;
+      unsigned short us1, us2;
+    
+      c = 0xf0; uc = 0xf0;
+      us1 = c; us2 = uc;
+      printf("us1 = %8x,\tus2 = %8x\n", us1, us2);
+      s1 = c; s2 = uc;
+      printf("us1 = %8x,\tus2 = %8x\n", s1, s2);
+    }
+
+  Show the following steps:
+   Step1   show the values in c and uc
+   Step2   show the integral promoted values of c and uc
+   Step3   show the values in us1 and us2
+   Step4   show the integral promoted values of us1 and us2 
+   (these are the values printed by the first printf statement)
+   Step5   show the integral promoted values of c and uc 
+   (they are the same as those values in Step2)
+   Step6   show the values in s1 and s2
+   Step7   show the integral promoted values of s1 and s2
+   (these are the values printed by the second printf statement)
+
+1. Reverse compile question1.asm (obtain a possible source C program for
+   question1.asm).
+   The original program does not do any meaningful computation.
+   
+   You can assume all 4 byte variables to be of type (signed) int
+   Determine the types of 2-byte and 1-byte variables from the code
+   Hint: pay attention to integral promoted values of these variables
+   
+   Draw a memory image of the execution of the program.
+   You must write the offsets of all the local variables and parameters
+   But you do not need to simulate the execution or write values of any variable.
+   (I do not even know if the program terminates)
+
+2. Reverse compile question2.asm (obtain a possible source C program for
+   question2.asm).
+   The original program does not do any meaningful computation.
+   
+   You can assume all 4 byte variables to be of type (signed) int
+   
+   Draw a memory image of the execution of the program.
+   You must write the offsets of all the local variables and parameters.
+   But you do not need to simulate the execution or write values of any variable.
+  
+3. Reverse compile question3.asm.
+ 
+   You can assume all 4 byte variables to be of type (signed) int
+   Determine the types of 2-byte and 1-byte variables from the code
+
+   Draw a memory image of the program executed on Pentium right before 
+   printf is invoked  (call _printf)
+
+   Based on the memory image you draw, trace the code and write exactly 
+   what the program will print.
+   You need to simulate the execution up to printf is called.
+   You need to write values in all variables (up to printf is called)
+   When a value in a variable is updated, cross off the old value (do not erase)
+   and write the new value on the left side of the old value
+   
+   
+How to submit:
+1. Create the top-level submission directory after your LastName_FirstName 
+   (e.g., Mizuno_Masaaki in my case)
+2. In the top-level directory, create 4 directories and name them
+   question0, question1, question2, and question3, respectively
+3. In each sub directory , put your answer files
+
+   For question0, explain the values of each step in English (txt, doc, or pdf file)
+   For questions 1~3, submit your C program (text file) and drawing of a memory image
+   (for drawing, you must use a drawing tool (hand drawing is not acceptable) and
+   we only accept .ppt(x), jpeg, or pdf file).
+   
+4. Zip the top-level submission directory and submit the zip file in KSOL
+
