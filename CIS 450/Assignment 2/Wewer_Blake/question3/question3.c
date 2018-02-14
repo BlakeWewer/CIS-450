@@ -6,5 +6,7 @@ char c1 = malloc(sizeof(char));
 int j = 3;
 int m = 1;
 
+//string
+string [NAME] = "\n%d\t%d\t%d\t%d\t%d\t%d\n";
 // DB : Lines 186 - 188 ?????
 
