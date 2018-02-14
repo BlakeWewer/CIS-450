@@ -10,3 +10,7 @@ int m = 1;
 string [NAME] = "\n%d\t%d\t%d\t%d\t%d\t%d\n";
 // DB : Lines 186 - 188 ?????
 
+trace_me(int param1, int param2, char uc)
+{
+  
+}
