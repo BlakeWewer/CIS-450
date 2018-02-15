@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int i = malloc(sizeof(int));
-char *c1 = malloc(sizeof(char));
+int i;
+char c1;
 
 int j = 3;
 int m = 1;
@@ -9,26 +10,30 @@ int m = 1;
 
 int trace_me(int param1, int param2, char uc)
 {
-	static int p;
-	static int o;
-	int n;
-	n = 3;
+	static int p = 7;
+	static int o = 1;
+	int n = 3;
 	m++;
 	
 	if(param1 == 0)
 	{
-		p = m;
-		o = param2;
-		n = param1;
-		char NAME[] = "\n%d\t%d\t%d\t%d\t%d\t%d\n";
-		printf(NAME, p, o, n);
+		printf("\n%d\t%d\t%d\t%d\t%d\t%d\n", p, o, n, m, param2, param1);
 	}else{
 		o++;
 		p++;
 		param2++;
 		c1++;
-		trace_me(param1 - 1, param2);
+		trace_me(param1 - 1, param2, c1);
 	}
+	
+	return 0;
+}
+
+int main()
+{
+	c1 = 2;
+	
+	trace_me(2, m, c1);
 	
 	return 0;
 }
