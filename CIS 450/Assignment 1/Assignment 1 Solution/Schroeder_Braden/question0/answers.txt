@@ -1,0 +1,22 @@
+EXECUTED CODE PRINTS:
+
+us1 =     fff0, us2 =     f0
+us1 = fffffff0, us2 =     f0   
+
+/////////////////////////////////////////////////////////////////
+
+Steps
+1) c = f0 	uc = f0
+	These are the values entered into the variables in the c code.
+2) c = fffffff0 	uc = 000000f0 
+	These are the sign extended/zero extended values as found in assembly code. 
+3) us1 = fff0  us2 = 00f0 
+	These are the first two bits of the sign/zero extended values moved from c & uc to us1 & us2 respectively. 
+4) us1 = 0000fff0 	us2 = 000000f0
+	Both of these values are zero extended because they are unsigned. When printed, the beginning zeros are removed.
+5) c = fffffff0 	uc = 000000f0 
+	These are the sign extended/zero extended values as found in assembly code. 
+6) s1 = fff0 	s2 = 00f0
+	These are the firt two bits of the sign extended values moved from c & uc to s1 and s2 respectively. 
+7) s1 = fffffff0 	s2 = 000000f0 
+	These are the sign extended/zero extended values.  When printed, the beginning zeros are removed.

@@ -37,12 +37,19 @@ _BSS	ENDS
 ; File c:\k-state\cis450\runs\2018s\assignment3\question2\trace1.c
 _TEXT	SEGMENT
 _main	PROC
+
+  ;		int main(int argc, char **argv, char **envp)
+  ;		{
   00000	55		 push	 ebp
   00001	8b ec		 mov	 ebp, esp
+  
+  ;			trace_me1(3, 4);
   00003	6a 03		 push	 3
   00005	6a 04		 push	 4
   00007	e8 00 00 00 00	 call	 _trace_me1
   0000c	83 c4 08	 add	 esp, 8
+  
+  ;			printf("%d\t%d\t%d\n", x, y, i);
   0000f	a1 00 00 00 00	 mov	 eax, DWORD PTR _i
   00014	50		 push	 eax
   00015	8b 0d 00 00 00
@@ -57,10 +64,15 @@ _main	PROC
 	; Here, the push operation pushes the starting address of the character
 	; array holding the string
   00029	e8 00 00 00 00	 call	 _printf
+  
+  
   0002e	83 c4 10	 add	 esp, 16			; 00000010H
+  
+  ;			return 0;
   00031	33 c0		 xor	 eax, eax
   00033	5d		 pop	 ebp
   00034	c3		 ret	 0
+  ;		}
 _main	ENDP
 _TEXT	ENDS
 ; Function compile flags: /Odtp
