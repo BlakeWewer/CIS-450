@@ -1,0 +1,40 @@
+#include <libcmt.h>
+#include <oldnames.h>
+
+short s1 = 12;
+
+int ui;
+
+static int i = 24;
+
+static unsigned short u2;
+
+int main(int argc, char ** argv, char ** envp)
+{
+	int y;
+	int x;
+	char c;
+	
+	x = s1 + i * 3;
+	u2 = x + 6;
+	ui = s1 + 15;
+	c = 5;
+	y = 0;
+
+	while (x > 0)
+	{
+		y = y + 1;
+		x = x - u2 - c;
+	}
+
+	if (x < (i << 1))     //MM:  or if (x < i * 2)
+	{
+		ui = c + u2*4 + 45
+	}
+
+	else
+	{
+		i = x + y - (c << 1);  // MM: or i = x + y - c * 2;
+	}
+	return 0;
+}

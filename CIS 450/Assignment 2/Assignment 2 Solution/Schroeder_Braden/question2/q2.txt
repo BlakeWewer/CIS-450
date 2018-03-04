@@ -1,0 +1,28 @@
+#include <libcmt.h>
+#include <oldnames.h>
+
+int x;
+
+int y = 20;
+
+int main()
+{
+	int j;
+	int i;
+
+	i = 20;
+
+	for (i; i <= 30; i++)
+	{
+		x = i * y + 33;
+		if (x <= 20)
+		{
+			j = x;
+		}
+		else
+		{
+			j = x + 2;
+		}
+	}
+	return 0;
+}
