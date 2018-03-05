@@ -17,41 +17,41 @@ int g() {
 		// complete your assembly program here
 		
 		//Allocate local variables "short s1" and "unsigned char uc1"
-		// c = [ebp+5]
-		// s = [ebp+7]
-		// uc = [ebp+8]
-		// i = [ebp+12]
-		sub esp, 4
+		// c = [ebp+8]
+		// s = [ebp+12]
+		// uc = [ebp+16]
+		// i = [ebp+20]
+		sub esp, 8
 		//Assign c+5 to gc, s + 10 to s1, uc + 5 to uc1, and i to gi
-		mov eax, BYTE PTR[ebp+5]
+		movsx eax, DWORD PTR[ebp+8]
 		add eax, 5
-		mov BYTE PTR gc, eax
+		mov DWORD PTR gc, eax
 		
-		mov eax, WORD PTR[ebp+7]
+		movsx eax, DWORD PTR[ebp+12]
 		add eax, 10
-		mov WORD PTR[esp+2], eax
+		mov DWORD PTR[esp+2], eax
 		
-		mov eax, BYTE PTR[ebp+8]
+		movzx eax, DWORD PTR[ebp+16]
 		add eax, 5
-		mov BYTE PTR[esp+3], eax
+		mov DWORD PTR[esp+3], eax
 		
-		mov eax, DWORD PTR[ebp+12]
+		mov eax, DWORD PTR[ebp+20]
 		mov DWORD PTR gi, eax
 		
 		//call f with gc, s1, uc1, gi in this order
 		mov eax, DWORD PTR gi
 		push eax
-		mov eax, BYTE PTR[esp+3]
+		mov eax, DWORD PTR[esp+8]
 		push eax
-		mov eax, WORD PTR[esp+2]
+		mov eax, DWORD PTR[esp+4]
 		push eax
-		mov eax, BYTE PTR gc
+		mov eax, DWORD PTR gc
 		push eax
 		call f
 	
 		//return the return value of invocation of f
 		
-		add esp, 4
+		add esp, 8
 		mov esp, ebp
 	}
 }

@@ -16,7 +16,7 @@ void func(int fp1, int fp2, int fp3)
 	i1 = i1 - 1;
 	if(s1 < i1)
 	{				//L3
-		while(i2 >= 1)
+		while(1 >= i2)
 		{			//L4
 			f1 = s1 + fp1;
 			f2 = fp2 - s1;
