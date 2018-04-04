@@ -1,0 +1,76 @@
+			CS450					Spring, 2018
+
+			Assignment 4
+			
+Due: 12:20pm on 4/6/2018 (Friday) => Changed to 12:20pm on 4/9/2018 (Monday) due to Open House
+
+Quesiton 1: Analysis of Pointer Expressions
+
+Consider the following program:
+
+int a[2][3][2][3];
+
+int (*b[2][3])[3] = {{a[0][1], a[1][1], a[1][0]},{a[1][2],a[0][2],a[0][0]}};
+
+int (*(*c)[3])[3] = b;
+
+int (***d)[3] = a;
+
+
+int main()
+{
+	int i,j,k,m;
+	int val;
+	
+	val = 1;
+	for(i = 0; i < 2; i++)
+	 for(j = 0; j < 3; j++)
+	  for(k = 0; k < 2; k++)
+	   for(m = 0; m < 3; m++)
+		a[i][j][k][m] = val++;
+
+LABEL:
+	return 0;
+}
+
+Note:  some statements may cause compile time warning (due to type mismatch)
+or run-time segmentation error (by accessing outside its address space).
+
+Assume that the execution control is at LABEL. 
+   What are the values of the following expressions:
+  1. a[1][2]
+  2. (**b)+2
+  3. b[1][1][1][1]
+  4. (*(c[1][2]+1))[2]
+  5. d
+  6. *d
+  7. **d
+
+ If the value is an address, then describe what the address corresponds to.
+ For example, "a" denotes the address of a[0][0][0][0] (= &a[0][0][0][0])
+ Note: "address of a (a[0], a[0][0], or a[0][0][0]" is not acceptable 
+ since it is a constant.
+  
+ For each expression, write a sequence of derivation steps , just like the derivations shown in slides CIS450-2-17~19.
+ For each step, write its type and value.
+
+ Some expressions would cause meaningless memory accesses.
+ But that is fine --- just apply the pointer arithmetic rules mechanically
+ by assuming sizeof(pointer to some object) = sizeof(int) = 4.
+ 
+ 
+Question 2: Pointer Declarations
+
+Unzip to Assignment4.zip.
+It contains a VC++ solution "Assignment4" and "Assignment4.pdf."
+Refer to Assignment4.pdf. It has an integer array a[3][2][2][2] and pointer variables b~q.
+Declare and initialize each variable b~q so that
+  a[ii][jj][kk][mm]  = b[ii][jj][kk][mm] = ...= q[ii][jj][kk][mm] hold.
+Complete the c program in Assignment4, just as we did in class on Exercise1 in PointerExercises in Chap2 in CoursePrograms.
+
+
+How to submit:
+1. Make a top-level submission directory after your LastName_FirstName (e.g., Mizuno_Masaaki in my case)
+2. For Question 1, type your answer in a txt file or a doc file.  For Question 2, complete solution "Assignment4."
+3  Put your document file for Question 1 and the solution directory "Assignment4" for Question 2 in your submission directory
+4. Zip the whole submission directory and submit the zip fie in KSOL.

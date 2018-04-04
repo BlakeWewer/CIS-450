@@ -1,0 +1,115 @@
+1)	a[1][2] is a pointer to an array [2][3] of ints (= &a[1][2][0][0])
+		a:					T	ptr to [2][3][2][3] of int
+							V 	&a[0][0][0][0]
+		a+1:				T	ptr to [2][3][2][3] of int
+							V	&a[0][0][0][0] + 1*sizeof([3][2][3] of int) = &a[1][0][0][0]
+		*(a+1)=a[1]			T	ptr to [3][2][3] of int
+							V 	&a[1][0][0][0]
+		a[1]+2				T	ptr to [3][2][3] of int
+							V	&a[1][0][0][0] + 2*sizeof([2][3] of int) = &a[1][2][0][0]
+		*(a[1]+2)=a[1][2]	T	ptr to [2][3] of int
+							V	&a[1][2][0][0]
+							
+							
+2)	(**b)+2
+		b:					T	[2][3] of ptr to [3] of int
+							V	&b[0][0]
+		*b=b[0]:			T	[3] of ptr to [3] of int
+							V	&b[0][0]
+		**b=b[0][0]:		T	ptr to [3] of int
+							V	&b[0][0] = &a[0][1]
+		(**b)+2:			T	ptr to [3] of int
+							V	&b[0][0] + 2*sizeof(int) = &b[0][0][2]
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		
+		
+3) 	b[1][1][1][1]
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		
+		
+		
+4) 	(*(c[1][2]+1))[2]
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		
+		
+5)	d
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		
+		
+6)	*d
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		
+		
+7)	**d
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		:					T
+							V
+		
