@@ -1,4 +1,4 @@
-1)	a[1][2] is a pointer to an array [2][3] of ints (= &a[1][2][0][0] = 28)
+1)	a[1][2] is a pointer to an array [2][3] of ints (= a[1][2][0][0] = 31)
 		a:					T	ptr to [2][3][2][3] of int
 							V 	&a[0][0][0][0]
 		a+1:				T	ptr to [2][3][2][3] of int
@@ -11,7 +11,7 @@
 							V	&a[1][2][0][0]
 							
 							
-2)	(**b)+2 is of type ptr to [3] of int	************************************************************
+2)	(**b)+2 is of type ptr to [3] of int	
 		b:					T	[2][3] of ptr to [3] of int
 							V	b[0][0]
 		*b=b[0]:			T	[3] of ptr to [3] of int
@@ -19,7 +19,7 @@
 		**b=b[0][0]:		T	ptr to [3] of int
 							V	b[0][0] = &a[0][1]
 		(**b)+2:			T	ptr to [3] of int
-							V	b[0][0] + 2*sizeof(int) = b[0][0][2] = &a[0][1][2][0]
+							V	b[0][0] + 2*sizeof(int) = b[0][0][2] = &a[0][1][2] = &a[0][2][0]
 		
 		
 3) 	b[1][1][1][1] is of type int (&a[0][2][1][1] = 17)
@@ -32,81 +32,55 @@
 		b[1]+1:							T	[3] of ptr to [3] of int
 										V	b[1][0] + 1*sizeof(ptr to [3] of int) = b[1][1]
 		*(b[1]+1)=b[1][1]:				T	ptr to [3] of int
-										V	b[1][1] = &a[0][2][0][0]
+										V	b[1][1] = &a[0][2]
 		b[1][1]+1:						T	ptr to [3] of int
-										V	&a[0][2] + 1*sizeof([3] of int) = &a[0][2][1][0]
+										V	&a[0][2] + 1*sizeof([3] of int) = &a[0][2][1]
 		*(b[1][1]+1)=b[1][1][1]:		T	[3] of int
-										V	&a[0][2][1][0]
+										V	&a[0][2][1]
 		b[1][1][1]+1:					T	[3] of int
-										V 	&a[0][2][1] + 1*sizeof(int) = &a[0][2][1][1]
+										V 	&a[0][2][1] + 1*sizeof(int) = a[0][2][1][1]
 		*(b[1][1][1]+1)=b[1][1][1][1]:	T	int
-										V	&a[0][2][1][1]
+										V	a[0][2][1][1]
 		
 		
-4) 	(*(c[1][2]+1))[2]
-		c:					T	ptr to [3] of ptr to [3] of int
-							V	c = b[0][0]
-		c+1:				T	ptr to [3] of ptr to [3] of int
-							V	c + 1*sizeof([3] of ptr to [3] of int) = b[1][0]
-		*(c+1)=c[1]:		T	[3] of ptr to [3] of int
-							V	b[1][0]
-		c[1]+1:				T	
-							V	
-		:					T	
-							V	
-		:					T	
-							V	
-		:					T	
-							V	
+4) 	(*(c[1][2]+1))[2] is of type int (&a[0][0][1][2] = 6)
+		c:										T	ptr to [3] of ptr to [3] of int
+												V	c = b[0][0]
+		c+1:									T	ptr to [3] of ptr to [3] of int
+												V	c + 1*sizeof([3] of ptr to [3] of int) = b[1][0]
+		*(c+1)=c[1]:							T	[3] of ptr to [3] of int
+												V	b[1][0]
+		c[1]+2:									T	[3] of ptr to [3] of int
+												V	c[1] + 2*sizeof(ptr to [3] of int) = b[1][2] = &a[0][0]
+		*(c[1]+2)=c[1][2]:						T	ptr to [3] of int
+												V	&a[0][0]
+		c[1][2]+1:								T	ptr to [3] of int
+												V	&a[0][0] + 1*sizeof([3] of int)
+		*(c[1][2]+1):							T	[3] of int
+												V	&a[0][0][1]
+		*(c[1][2]+1)+2:							T	[3] of int
+												V	&a[0][0][1] + 2*sizeof(int)
+		*(*(c[1][2]+1)+2)=(*(c[1][2]+1))[2]:	T	int
+												V	&a[0][0][1][2]
 		
 		
-5)	d
-		:					T
-							V
-		:					T
-							V
-		:					T
-							V
-		:					T
-							V
-		:					T
-							V
-		:					T
-							V
-		:					T
-							V
+5)	d is of type ptr to ptr to ptr to [3] of int (= &a[0][0][0][0])
+		d:					T	ptr to ptr to ptr to [3] of int
+							V	d = &a = &a[0][0][0][0]
 		
 		
-6)	*d
-		:					T
-							V
-		:					T
-							V
-		:					T
-							V
-		:					T
-							V
-		:					T
-							V
-		:					T
-							V
-		:					T
-							V
+6)	*d is of type ptr to ptr to [3] of int (= a[0][0][0][0] = 1)
+		d:					T	ptr to ptr to ptr to [3] of int
+							V	d = &a[0][0][0][0]
+		*d:					T	ptr to ptr to [3] of int
+							V	&a[0][0][0][0] + 0*sizeof(ptr to [3] of int) = a[0][0][0][0]
 		
 		
-7)	**d
-		:					T
-							V
-		:					T
-							V
-		:					T
-							V
-		:					T
-							V
-		:					T
-							V
-		:					T
-							V
-		:					T
-							V
+7)	**d is of type ptr to [3] of int
+		d:					T	ptr to ptr to ptr to [3] of int
+							V	d = &a[0][0][0][0]
+		*d:					T	ptr to ptr to [3] of int
+							V	&a[0][0][0][0] + 0*sizeof(ptr to [3] of int) = a[0][0][0][0]
+		**d:				T	ptr to [3] of int
+							V	a[0][0][0][0] + 0*sizeof([3] of int) = *a[0][0][0][0]
 		
